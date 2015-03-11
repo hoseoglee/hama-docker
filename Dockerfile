@@ -1,11 +1,9 @@
-FROM centos:centos6
+FROM tianon/centos:6.5
 MAINTAINER Hoseog Lee <hoseog@gmail.com>
 
 ENV HAMA_HOME /opt/hama
 ENV HAMA_VERSION 0.6.4
 
-#RUN apt-get update && apt-get -y upgrade
-#RUN apt-get -y install wget openssh-server curl
 RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
 RUN yum install -y wget which openssh-clients openssh-server curl tar system-config-services sudo
@@ -21,7 +19,7 @@ RUN rm jdk-7u71-linux-x64.rpm
 ENV JAVA_HOME /usr/java/default
 ENV PATH $PATH:$JAVA_HOME/bin
 
-RUN wget http://apache.tt.co.kr/hama/hama-$HAMA_VERSION/hama-$HAMA_VERSION.tar.gz
+RUN wget http://mirror.apache-kr.org/hama/hama-$HAMA_VERSION/hama-$HAMA_VERSION.tar.gz
 RUN tar -zxvf hama-$HAMA_VERSION.tar.gz
 RUN rm -rf hama-*.tar.gz
 RUN export HAMA_HOME=$HAMA_HOME
