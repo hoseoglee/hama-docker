@@ -28,5 +28,5 @@ In order to use the Docker image you have just build or pulled use:
 $ docker run -it --name hama-docker hama-docker /bin/bash
 ```
 
-##Testing ()
-
+##Testing (PageRnk example & K-Means example)
+Ref. https://hama.apache.org/run_examples.html
