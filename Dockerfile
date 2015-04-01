@@ -6,7 +6,15 @@ ENV HAMA_VERSION 0.6.4
 
 RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
-RUN yum install -y wget which openssh-clients openssh-server curl tar system-config-services sudo
+RUN yum install -y wget \
+	which \
+	openssh-clients \
+	openssh-server \
+	curl \
+	tar \
+	system-config-services \
+	sudo
+
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 
@@ -19,6 +27,7 @@ RUN rm jdk-7u71-linux-x64.rpm
 ENV JAVA_HOME /usr/java/default
 ENV PATH $PATH:$JAVA_HOME/bin
 
+# hama
 RUN wget http://mirror.apache-kr.org/hama/hama-$HAMA_VERSION/hama-$HAMA_VERSION.tar.gz
 RUN tar -zxvf hama-$HAMA_VERSION.tar.gz
 RUN rm -rf hama-*.tar.gz
@@ -28,5 +37,3 @@ RUN mv hama-* $HAMA_HOME
 COPY hama-site.xml $HAMA_HOME/conf/
 
 EXPOSE 40013
-
-#RUN $HAMA_HOME/bin/hama jar hama-examples-0.x.0.jar
