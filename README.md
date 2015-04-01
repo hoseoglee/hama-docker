@@ -1,5 +1,8 @@
 #Hama-docker
 
+## Hama
+Apache Hama is a general BSP computing engine on top of Hadoop, which was established in 2012 as a Top-Level Project of The Apache Software Foundation. It provides High-Performance computing engine for performing massive scientific and iterative algorithms on existing open source or enterprise Hadoop cluster, such as Matrix, Graph, and Machine Learning.[detail. https://hama.apache.org/](https://hama.apache.org/) 
+
 ## Pull the image from registry.hub.docker.com
 The image is also released as an Docker image from Docker's automated build repository 
 - you can always pull or refer the image when launching containers.
